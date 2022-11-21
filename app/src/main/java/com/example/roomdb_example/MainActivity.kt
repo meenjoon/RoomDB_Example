@@ -29,19 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         CoroutineScope(Dispatchers.IO).launch {
             db!!.userDao().insert(newUser)
+            myText.text = db.userDao().getAll().toString()
+            db.userDao().deleteUserByName("홍길동")
         }
-
-        CoroutineScope(Dispatchers.IO).launch {
-//            db!!.userDao().deleteUserByName("홍길동")
-            myText.text = db!!.userDao().getAll().toString()
-        }
-
-
-
-
-
-
-
-
     }
 }
